@@ -5,7 +5,7 @@ Input and display details of 5 students.
 
 #include<stdio.h>
 
-# define SIZE 2
+# define SIZE 5
 
 struct Student
 {
@@ -67,4 +67,5 @@ int main()
     DisplayDetails(student, SIZE);
     
     return 0;
+
 }
