@@ -2,7 +2,7 @@
 
 import java.util.*;
 
-class p1
+class String1
 {
     public static void main(String[] args) {
         
