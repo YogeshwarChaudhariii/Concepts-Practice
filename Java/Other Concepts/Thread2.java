@@ -8,7 +8,7 @@ class MyRunnable implements Runnable
     }
 }
 
-public class p2 {
+public class Thread2 {
     public static void main(String[] args) {
         MyRunnable mobj = new MyRunnable();
 
@@ -16,3 +16,4 @@ public class p2 {
         t1.start();
     }
 }
+
