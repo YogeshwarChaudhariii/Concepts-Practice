@@ -2,7 +2,7 @@
 
 import java.util.Scanner;
 
-public class p2 
+public class String2 
 {
     public static void main(String[] args) {
         Scanner sobj = new Scanner(System.in);
@@ -13,3 +13,4 @@ public class p2
         System.out.println("String length is: "+Name.length());
     }
 }
+
