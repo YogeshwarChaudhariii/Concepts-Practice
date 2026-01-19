@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class p4 {
+public class String4 {
     public static void main(String[] args) {
         Scanner sobj = new Scanner(System.in);
 
@@ -13,3 +13,4 @@ public class p4 {
         }
     }
 }
+
