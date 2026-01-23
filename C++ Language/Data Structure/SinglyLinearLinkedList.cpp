@@ -71,12 +71,31 @@ class SinglyLinearLinkedList
             iCount++;
         }
 
+        void DeleteFirst()
+        {
+            if (first == NULL)
+            {
+                return;
+            }
+            else
+            {
+                temp = first;
+
+                first = (first)->next;
+
+                delete(temp);
+            }  
+            iCount--;
+        }
+
         void Display()
         {
-            while (first != NULL)
+            temp = first;
+
+            while (temp != NULL)
             {
-                cout<<"| "<<first->data<<" | -> ";
-                first = first->next;
+                cout<<"| "<<temp->data<<" | -> ";
+                temp = temp->next;
             }
             cout<<"NULL"<<endl;
         }
@@ -102,6 +121,11 @@ int main()
     SLLobj.Display();
     iRet = SLLobj.Count();
     cout<<"Number of elements are: "<<iRet<<endl;
+
+    SLLobj.DeleteFirst();
+    SLLobj.Display();
+    iRet = SLLobj.Count();
+    cout<<"Number of elements are: "<<iRet;
 
 
     return 0;
