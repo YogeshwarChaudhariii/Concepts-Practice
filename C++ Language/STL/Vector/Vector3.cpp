@@ -13,11 +13,19 @@ int main()
     Demo.push_back(51);
     Demo.push_back(101);
 
-    for(int val : Demo)
+    for (int i = 0; i < Demo[i]; i++)
     {
-        cout<<val<<" ";
+        cout<< Demo[i] <<" ";
     }
     cout<<endl;
+
+            // OR (both are same)
+
+    // for(int val : Demo)
+    // {
+    //     cout<<val<<" ";
+    // }
+    // cout<<endl;
 
                           //Start       //End
     vector<int>Demo1(Demo.begin(), Demo.begin() + 2);
