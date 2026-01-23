@@ -11,6 +11,7 @@ class SinglyLinearLinkedList
 {
     private:
         PNODE first;
+        PNODE temp;
         int iCount;
 
     public:
@@ -18,6 +19,7 @@ class SinglyLinearLinkedList
         SinglyLinearLinkedList()
         {
             this->first = NULL;
+            this->temp = NULL;
             this->iCount = 0;
         }
 
@@ -40,6 +42,32 @@ class SinglyLinearLinkedList
                 first = newn;
             }
 
+            iCount++;
+        }
+
+        void InsertLast(int no)
+        {
+            PNODE newn = NULL;
+
+            newn = new NODE;
+
+            newn->data = no;
+            newn->next = NULL;
+
+            if (first == NULL)
+            {
+                first = newn;
+            }
+            else
+            {
+                temp = first;
+
+                while (temp->next != NULL)
+                {
+                    temp = temp->next;
+                }
+                temp->next = newn;
+            }
             iCount++;
         }
 
@@ -67,6 +95,10 @@ int main()
     SLLobj.InsertFirst(51);
     SLLobj.InsertFirst(21);
     SLLobj.InsertFirst(11);
+
+    SLLobj.InsertLast(101);
+    SLLobj.InsertLast(111);
+    SLLobj.InsertLast(121);
     SLLobj.Display();
     iRet = SLLobj.Count();
     cout<<"Number of elements are: "<<iRet<<endl;
