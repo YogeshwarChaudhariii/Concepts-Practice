@@ -1,6 +1,18 @@
 #include<iostream>
 using namespace std;
 
+void Display(int iValue)
+{
+    if (iValue < 35)
+    {
+        cout<<"Fail"<<endl;
+    }
+    else
+    {
+        cout<<"Pass"<<endl;
+    }
+}
+
 int main()
 {
     int iMarks = 0;
@@ -8,15 +20,10 @@ int main()
     cout<<"Enter your marks: "<<endl;
     cin>>iMarks;
 
-    if (iMarks < 35)
-    {
-        cout<<"You are fail"<<endl;
-    }
-    else
-    {
-        cout<<"Your Pass"<<endl;
-    }
+    Display(iMarks);
+
     
+    cout<<"End of application";
     
 
     return 0;
