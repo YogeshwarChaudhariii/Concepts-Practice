@@ -12,13 +12,15 @@ class SinglyLinearLinkedList
     private:
         PNODE first;
         PNODE temp;
+        PNODE target;
         int iCount;
 
     public:
-
+        
         SinglyLinearLinkedList()
         {
             this->first = NULL;
+            this->target = NULL;
             this->temp = NULL;
             this->iCount = 0;
         }
@@ -68,6 +70,24 @@ class SinglyLinearLinkedList
                 temp->next = newn;
             }
             iCount++;
+            
+        }
+
+        void Display()
+        {
+            temp = first;
+
+            while (temp != NULL)
+            {
+                cout<<"| "<<temp->data<<" | -> ";
+                temp = temp->next;
+            }
+            cout<<"NULL"<<endl;
+        }
+
+        int Count()
+        {
+            return iCount;
         }
 
         void DeleteFirst()
@@ -80,8 +100,7 @@ class SinglyLinearLinkedList
             {
                 temp = first;
 
-                first = (first)->next;
-
+                first = first->next;
                 delete(temp);
             }
             iCount--;
@@ -93,10 +112,10 @@ class SinglyLinearLinkedList
             {
                 return;
             }
-            else if ((first)->next == NULL)
+            else if (first->next == NULL)
             {
-                delete(first);
-                first = NULL;
+                delete(first->next);
+                first->next = NULL;
             }
             else
             {
@@ -105,58 +124,123 @@ class SinglyLinearLinkedList
                 while (temp->next->next != NULL)
                 {
                     temp = temp->next;
+                    delete(temp->next);
                 }
-                delete(temp->next);
                 temp->next = NULL;
             }
             iCount--;
         }
 
-        void Display()
+        void InsertAtPos(int no, int Pos)
         {
-            temp = first;
+            PNODE newn = NULL;
 
-            while (temp != 0)
+            if ((Pos < 1) || (Pos > iCount + 1))
             {
-                cout<<"| "<<temp->data<<" | -> ";
-                temp = temp->next;
+                cout<<"Invalid Position"<<endl;
+                return;
             }
-            cout<<"NULL"<<endl;
+
+            if (Pos == 1)
+            {
+                InsertFirst(no);
+            }
+            else if (Pos == iCount + 1)
+            {
+                InsertLast(no);
+            }
+            else
+            {
+                temp = first;
+
+                for (int i = 1; i <= Pos - 2; i++)
+                {
+                    temp = temp->next;
+                }
+                
+                newn = new NODE;
+
+                newn->data = no;
+                newn->next = NULL;
+
+                newn->next = temp->next;
+                temp->next = newn;
+            }
+            iCount++;
         }
 
-        int Count()
+        void DeleteAtPos(int Pos)
         {
-            return iCount;
+            PNODE newn = NULL;
+
+            if ((Pos < 1) || (Pos > iCount))
+            {
+                cout<<"Invalid Position"<<endl;
+                return;
+            }
+
+            if (Pos == 1)
+            {
+                DeleteFirst();
+            }
+            else if (Pos == iCount)
+            {
+                DeleteLast();
+            }
+            else
+            {
+                temp = first;
+
+                for (int i = 1; i < Pos - 2; i++)
+                {
+                    temp = temp->next;
+                }
+                target = temp->next;
+
+                temp->next = target->next;      // temp->next = temp->next->next
+                delete(target);
+            }
+            iCount--;
         }
 };
 
 int main()
 {
-    SinglyLinearLinkedList SLLobj;
+    SinglyLinearLinkedList slobj;
     int iRet = 0;
 
-    SLLobj.InsertFirst(51);
-    SLLobj.InsertFirst(21);
-    SLLobj.InsertFirst(11);
+    slobj.InsertFirst(51);
+    slobj.InsertFirst(21);
+    slobj.InsertFirst(11);
 
-    SLLobj.InsertLast(101);
-    SLLobj.InsertLast(111);
-    SLLobj.InsertLast(151);
+    slobj.InsertLast(101);
+    slobj.InsertLast(111);
+    slobj.InsertLast(121);
 
-    SLLobj.Display();
-    iRet = SLLobj.Count();
+    slobj.Display();
+    iRet = slobj.Count();
     cout<<"Number of elements are: "<<iRet<<endl;
 
-    SLLobj.DeleteFirst();
-    SLLobj.Display();
-    iRet = SLLobj.Count();
+    // slobj.DeleteFirst();
+    // slobj.Display();
+    // iRet = slobj.Count();
+    // cout<<"Number of elements are: "<<iRet<<endl;
+
+    // slobj.DeleteLast();
+    // slobj.Display();
+    // iRet = slobj.Count();
+    // cout<<"Number of elements are: "<<iRet<<endl;
+
+    slobj.InsertAtPos(5, 5);
+    slobj.Display();
+    iRet = slobj.Count();
     cout<<"Number of elements are: "<<iRet<<endl;
 
-    SLLobj.DeleteLast();
-    SLLobj.Display();
-    iRet = SLLobj.Count();
+    slobj.DeleteAtPos(2);
+    slobj.Display();
+    iRet = slobj.Count();
     cout<<"Number of elements are: "<<iRet<<endl;
-
+    
 
     return 0;
 }
