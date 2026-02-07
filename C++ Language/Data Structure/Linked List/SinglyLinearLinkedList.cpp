@@ -208,38 +208,100 @@ int main()
 {
     SinglyLinearLinkedList slobj;
     int iRet = 0;
+    int iChoice = 0;
+    int iValue = 0;
+    int iPos = 0;
 
-    slobj.InsertFirst(51);
-    slobj.InsertFirst(21);
-    slobj.InsertFirst(11);
+    cout<<"-------------------------------------------------------------"<<endl;
+    cout<<"---------------- Singly Linear LinkedList -------------------"<<endl;
+    cout<<"-------------------------------------------------------------"<<endl;
 
-    slobj.InsertLast(101);
-    slobj.InsertLast(111);
-    slobj.InsertLast(121);
+    while (1)
+    {
+        cout<<"-------------------------------------------------------------"<<endl;
+        cout<<"------------------ Please select the option -----------------"<<endl;
+        cout<<"-------------------------------------------------------------"<<endl;
+        cout<<"1 : Insert new node at first position"<<endl;
+        cout<<"2 : Insert new node at last position"<<endl;
+        cout<<"3 : Insert new node at given position"<<endl;
+        cout<<"4 : Delete the node from first position"<<endl;
+        cout<<"5 : Delete the node from last position"<<endl;
+        cout<<"6 : Delete the node from given position"<<endl;
+        cout<<"7 : Display all elements of LinkedList"<<endl;
+        cout<<"8 : Count number of nodes of LinkedList"<<endl;
+        cout<<"0 : Terminate the application"<<endl;
+        cout<<"-------------------------------------------------------------"<<endl;
 
-    slobj.Display();
-    iRet = slobj.Count();
-    cout<<"Number of elements are: "<<iRet<<endl;
+        cin>>iChoice;
 
-    // slobj.DeleteFirst();
-    // slobj.Display();
-    // iRet = slobj.Count();
-    // cout<<"Number of elements are: "<<iRet<<endl;
+        if (iChoice == 1)
+        {
+            cout<<"Enter the data that you want to insert: "<<endl;
+            cin>>iValue;
 
-    // slobj.DeleteLast();
-    // slobj.Display();
-    // iRet = slobj.Count();
-    // cout<<"Number of elements are: "<<iRet<<endl;
+            slobj.InsertFirst(iValue);
+        }
+        else if (iChoice == 2)
+        {
+            cout<<"Enter the data that you want to insert: "<<endl;
+            cin>>iValue;
 
-    slobj.InsertAtPos(5, 5);
-    slobj.Display();
-    iRet = slobj.Count();
-    cout<<"Number of elements are: "<<iRet<<endl;
+            slobj.InsertLast(iValue);
+        }
+        else if (iChoice == 3)
+        {
+            cout<<"Enter the data that you want to insert: "<<endl;
+            cin>>iValue;
 
-    slobj.DeleteAtPos(2);
-    slobj.Display();
-    iRet = slobj.Count();
-    cout<<"Number of elements are: "<<iRet<<endl;
+            cout<<"Enter the position at which you want to insert new node: "<<endl;
+            cin>>iPos;
+
+            slobj.InsertAtPos(iValue, iPos);
+        }
+        else if (iChoice == 4)
+        {
+            cout<<"Deleting the first element from LinkedList: "<<endl;
+
+            slobj.DeleteFirst();
+        }
+        else if (iChoice == 5)
+        {
+            cout<<"Deleting the last element from LinkedList: "<<endl;
+
+            slobj.DeleteLast();
+        }
+        else if (iChoice == 6)
+        {
+            cout<<"Deleting the element from given position from LinkedList"<<endl;
+
+            cout<<"Enter the position from which you want to delete the node : "<<endl;
+            cin>>iPos;
+
+            slobj.DeleteAtPos(iPos);
+        }
+        else if (iChoice == 7)
+        {
+            cout<<"Elements of the LinkedList are :"<<endl;
+
+            slobj.Display();
+        }
+        else if (iChoice == 8)
+        {
+            iRet = slobj.Count();
+            cout<<"Number of elements in the LinkedList are : "<<iRet<<endl;
+        }
+        else if (iChoice == 0)
+        {
+            cout<<"Thank you for using our application"<<endl;
+            break;
+        }
+        else
+        {
+            cout<<"Invalid Choice"<<endl;
+        }
+        cout<<"-------------------------------------------------------------"<<endl<<endl;
+    }
+    
     
 
     return 0;
